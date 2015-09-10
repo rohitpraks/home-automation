@@ -1,0 +1,91 @@
+<!-- This section has been implemented using: https://proto.io/freebies/onoff/-->
+<div class="onoffswitch">
+    <input type="checkbox" name="onoffswitch" ng-model="dataOnOff" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+    <label class="onoffswitch-label" for="myonoffswitch">
+        <span class="onoffswitch-inner"></span>
+        <span class="onoffswitch-switch"></span>
+    </label>
+</div>
+
+<!-- This section is implemented using Code Pen io's knob: http://codepen.io/oknoblich/pen/Icqmu-->
+<div class="container">
+
+    <!-- OUTER SHADOW -->
+    <div class="de">
+
+        <!-- TEXT -->
+        <div class="den">
+
+            <!-- LINE -->
+            <hr class="line">
+            <hr class="line">
+            <hr class="line">
+
+            <!-- SWITCH -->
+            <div class="switch">
+
+                <!-- TEXT -->
+                <label for="switch_off"><span>OFF</span></label>
+                <label for="switch_1"><span>50</span></label>
+                <label for="switch_2"><span>60</span></label>
+                <label for="switch_3"><span>70</span></label>
+                <label for="switch_4"><span>80</span></label>
+                <label for="switch_5"><span>90</span></label>
+
+                <!-- INPUT -->
+                <input id="switch_off" ng-disabled="!dataOnOff" name="switch" ng-click="changeTemperature('0')" checked type="radio">
+                <input id="switch_1" ng-disabled="!dataOnOff" ng-click="changeTemperature('50')" name="switch" type="radio">
+                <input id="switch_2" ng-disabled="!dataOnOff" ng-click="changeTemperature('60')" name="switch" type="radio">
+                <input id="switch_3" ng-disabled="!dataOnOff" ng-click="changeTemperature('70')" name="switch" type="radio">
+                <input id="switch_4" ng-disabled="!dataOnOff" ng-click="changeTemperature('80')" name="switch" type="radio">
+                <input id="switch_5" ng-disabled="!dataOnOff" ng-click="changeTemperature('90')" name="switch" type="radio">
+
+                <!-- LIGHT -->
+                <div class="light"><span></span></div>
+
+                <!-- DOT -->
+                <div class="dot"><span></span></div>
+
+                <!-- CENTER -->
+                <div class="dene">
+                    <div class="denem">
+                        <div class="deneme">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="verticalLine">
+</div>
+
+<div class="textStyle areaChartPosition">
+	Current Temperature: {{currentTemperature}} degrees Farenheit &nbsp;&nbsp;&nbsp;&nbsp;
+	Previous Temperature: {{previousTemperature}} degrees Farenheit
+</div>
+
+<!-- This section has been implemented using: angular-nvd3-directives -->
+<div ng-show="tempChangeAreaChartData" class="areaChartPosition">
+    <nvd3-stacked-area-chart
+            data="tempChangeAreaChartData"
+            id="exampleId"
+            height="400"
+            width="1000"
+            showXAxis="true"
+            showYAxis="true"
+            tooltips="true"
+            interactive="true"
+            useInteractiveGuideline="true"
+            toolTipContent="toolTipContentFunction()"
+            xAxisTickFormat="xAxisTickFormat()"
+            yAxisTickFormat="yAxisTickFormat()"
+   			xAxisLabel="Heat Absorbed or Emitted"
+   			yAxisLabel="Specific Heat * the Body Mass"
+   	>
+        <svg></svg>
+    </nvd3-stacked-area-chart>
+</div>
+
+
+
